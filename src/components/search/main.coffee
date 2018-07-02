@@ -4,6 +4,5 @@ export default
 
   methods:
     confirm: (e) ->
-      console.log(e.detail)
-      this.$emit('clickSearch', e.detail)
+      this.$emit 'clickSearch', { searchValue: this.searchValue }
       this.searchValue = ''

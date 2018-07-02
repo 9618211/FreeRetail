@@ -4,8 +4,8 @@
     input.input(
       placeholder="搜索"
       confirm-type="search"
-      bindconfirm="confirm"
-      :value="searchValue"
+      @confirm="confirm"
+      v-model="searchValue"
     )
 </template>
 
@@ -22,6 +22,7 @@ export default {
   display: flex
   justify-content: center
   align-items: center
+  width: 100%
   height: 80rpx
   background: #e74a39
 

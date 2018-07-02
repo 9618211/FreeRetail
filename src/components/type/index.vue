@@ -2,9 +2,9 @@
 .type(
   @click='clickType(type)'
 )
-  // img.img(
-  //  :src="'@/imgs/type' + index + '.png'"
-  //)
+  img.img(
+    :src="imgUrl"
+  )
   span.name(
     mode="aspectFit"
   ) {{type}}
@@ -27,11 +27,11 @@ export default {
   height: 160rpx
   margin: 16rpx 0
 
-  .type-img
+  .img
     width: 120rpx
     height: 120rpx
     border-radius: 60rpx
 
-  .type-name
+  .name
     font-size: 24rpx
 </style>

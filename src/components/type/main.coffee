@@ -6,8 +6,11 @@ export default
     index:
       type: Number
 
+  data: ->
+    imgUrl: '#'
+
   mounted: ->
-    console.log this.index
+    this.imgUrl = require("@/assets/type#{this.index}.png")
 
   methods:
     clickType: (type) ->

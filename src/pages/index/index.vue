@@ -1,6 +1,6 @@
 <template lang='pug'>
 .container
-  search(bind:clickSearch="clickSearch")
+  search(@clickSearch="clickSearch")
   swiper(
     :indicator-dots="bannerConfig.showDots"
     :autoplay="bannerConfig.autoplay"
@@ -12,10 +12,9 @@
       v-for="(url, index) of bannerConfig.urls" :key="index"
     )
       swiper-item
-        image(
+        img.banner(
           :src="url"
           mode="aspectFill"
-          class="banner"
           width="355"
           height="150")
   .types
@@ -36,7 +35,7 @@
     span.nothing-text 什么都没有...
   .bottom
     span(
-      bindtap="callPhone"
+      @click="callPhone"
     ) 联系号码：
       span.phone-number 18888888888
 </template>
@@ -61,6 +60,9 @@ export default {
 .container
   height: calc(100% - 80rpx)
   overflow-y: scroll
+
+  swiper
+    width: 100%
 
   .banner
     width: 100%
