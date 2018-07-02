@@ -6,6 +6,6 @@ app.$mount()
 
 export default {
   config: {
-    navigationBarTitleText: '选择你的身份'
+    "navigationBarTitleText": "零售免费小店",
   }
 }
