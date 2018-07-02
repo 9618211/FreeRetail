@@ -1,5 +1,6 @@
 import banner from '@/assets/banner.png'
 Bmob = require '@/utils/Bmob.js'
+owner = ''
 
 export default
   data:
@@ -18,9 +19,6 @@ export default
       autoplay: true
 
   onLoad: ->
-    wx.showShareMenu({
-      withShareTicket: false
-    })
 
   onShareAppMessage: ->
     title: '小本生意实体网店，就该免费使用。'
@@ -28,10 +26,15 @@ export default
   mounted: ->
     this.query()
 
+  onLoad: (option) ->
+    wx.showShareMenu
+      withShareTicket: false
+    owner = option.owner
+
   methods:
     query: (value) ->
       query = Bmob.Query 'Goods'
-      query.equalTo "owner", '==', 'zweizhao'
+      query.equalTo "owner", '==', owner
       currentType = this.currentType
       query.equalTo "type", '==', currentType if currentType isnt '全部'
 

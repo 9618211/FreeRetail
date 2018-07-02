@@ -3,7 +3,7 @@
   .ver.seller
     input.storeId(
       type='number'
-      v-model='storeId'
+      v-model='sellerId'
     )
     button.go(
       @click='clickGo(0)'
@@ -11,7 +11,7 @@
   .ver.buyer
     input.storeId(
       type='number'
-      v-model='storeId'
+      v-model='buyerId'
       :focus='true'
     )
     button.go(
@@ -29,6 +29,7 @@ export default {
 
 <style lang='sass' scoped>
 @import '@/sass/main.sass'
+
 .container
   position: absolute
   top: 0
