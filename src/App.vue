@@ -1,8 +1,9 @@
 <script>
+let Bmob = require('@/utils/Bmob.js')
 export default {
   created () {
-    // var Bmob = require('utils/bmob.js');
-    // Bmob.initialize("10c20307173e1e708410686adc74e74b", "7d35e8a8e11a1101dffca33daabf12e0")
+    Bmob = require('@/utils/Bmob.js')
+    Bmob.initialize("10c20307173e1e708410686adc74e74b", "7d35e8a8e11a1101dffca33daabf12e0")
   }
 }
 </script>

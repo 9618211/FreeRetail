@@ -76,6 +76,7 @@ export default {
   .current-type-block
     display: flex
     align-items: center
+    width: 100%
     height: 48rpx
 
   .current-red
@@ -92,13 +93,14 @@ export default {
     flex-wrap: wrap
     justify-content: space-between
     align-content: flex-start
+    width: 100%
     padding: 0 32rpx
 
   .nothing
     display: flex
     align-items: center
     margin: 32rpx 0 32rpx 32rpx
-
+    width: 100%
 
   .nothing-text
     font-size: 28rpx

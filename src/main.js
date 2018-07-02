@@ -15,7 +15,7 @@ export default {
     window: {
       "backgroundTextStyle":"light",
       "navigationBarBackgroundColor": "#e74a39",
-      "navigationBarTitleText": "免费零售小店",
+      "navigationBarTitleText": "零售免费小店",
       "navigationBarTextStyle":"white"
     }
   }
