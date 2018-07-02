@@ -1,0 +1,119 @@
+<template lang='pug'>
+.container
+  search(bind:clickSearch="clickSearch")
+  swiper(
+    indicator-dots="{{bannerConfig.showDots}}"
+    autoplay="{{bannerConfig.autoplay}}"
+    interval="{{bannerConfig.interval}}"
+    duration="{{bannerConfig.duration}}"
+    circular="{{bannerConfig.circular}}"
+  )
+     block(wx:for="{{bannerConfig.urls}}" wx:key="index")
+      swiper-item
+        image(
+          src="{{item}}"
+          mode="aspectFill"
+          class="banner"
+          width="355"
+          height="150")
+  .types
+     type(
+      wx:for="{{types}}"
+      wx:key="index"
+      type="{{item}}"
+      index="{{index}}"
+      bind:clickType="clickType")
+  .current-type-block
+    .current-red
+    .current-type {{currentType}}
+  .goods-block(wx:if="{{allGoods.length > 0}}")
+    goods(
+      wx:for="{{allGoods}}"
+      wx:key="index"
+      goods="{{item}}")
+  .nothing(wx:else)
+    icon(type="warn" size="20")
+    span.nothing-text 什么都没有...
+  .bottom
+    span(
+      bindtap="callPhone"
+    ) 联系号码：
+      span.phone-number 18888888888
+</template>
+
+<script>
+import main from './main.coffee'
+import goods from '@components/goods'
+import search from '@components/search'
+import type from '@components/type'
+
+export default {
+  components: {
+    goods,
+    search,
+    type,
+  },
+	...main
+}
+</script>
+
+<style scoped lang='sass'>
+.container
+  height: calc(100% - 80rpx)
+  overflow-y: scroll
+
+  .banner
+    width: 100%
+    height: 320rpx
+
+  .types
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-around
+
+  .current-type-block
+    display: flex
+    align-items: center
+    height: 48rpx
+
+  .current-red
+    width: 16rpx
+    height: 40rpx
+    margin: 0 16rpx 0 32rpx
+    background: rgb(231, 74, 57)
+
+  .current-type
+    font-size: 28rpx
+
+  .goods-block
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    align-content: flex-start
+    padding: 0 32rpx
+
+  .nothing
+    display: flex
+    align-items: center
+    margin: 32rpx 0 32rpx 32rpx
+
+
+  .nothing-text
+    font-size: 28rpx
+    color: #666
+
+  .bottom
+    position: fixed
+    bottom: 0
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    height: 80rpx
+    font-size: 28rpx
+    color: white
+    background: #e74a39
+
+  .phone-number
+    text-decoration: underline
+</style>
