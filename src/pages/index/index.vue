@@ -3,22 +3,40 @@
   .ver.seller
     input.storeId(
       type='number'
+      :focus='true'
       v-model='sellerId'
       placeholder='输入你的店号'
+      @focus='passwordShow=false'
     )
     button.go(
       @click='clickGo(0)'
     ) 前往卖家
-  .ver.buyer
+  .ver.password(
+    v-if='passwordShow'
+  )
+    input.storeId(
+      type='password'
+      v-model='password'
+      placeholder='输入你的6位密码'
+    )
+    button.go(
+      @click='login'
+    ) 点击登录
+  .ver.buyer(
+    v-else
+  )
     input.storeId(
       type='number'
       v-model='buyerId'
-      :focus='true'
       placeholder='输入店号'
     )
     button.go(
       @click='clickGo(1)'
     ) 前往买家
+  span.buyer-show(
+    v-if='passwordShow'
+    @click='passwordShow=false'
+  ) 显示买家
 </template>
 
 <script>
@@ -56,4 +74,8 @@ export default {
     .go
       background: $mainColor
       color: white
+
+  .buyer-show
+    font-size: 24rpx
+    color: #bbb
 </style>

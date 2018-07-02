@@ -4,6 +4,8 @@ export default
   data:
     sellerId: ''
     buyerId: ''
+    password: ''
+    passwordShow: false # 是否显示密码框
 
   methods:
     clickGo: (type) ->
@@ -12,21 +14,46 @@ export default
         else this.goBuyer null # 买家是1
 
     goSeller: ->
-      wx.showToast title: '尚未处理'
+      this.checkStoreId(this.sellerId)
+        .then (result) =>
+          this.username = result.username
+          this.passwordShow = true
+        .catch (err) ->
+          wx.showToast
+            title: err
+            icon: 'none'
 
     goBuyer: ->
+      this.checkStoreId(this.buyerId)
+        .then (result) =>
+          owner = result.username
+          mobile = result.mobilePhoneNumber
+          wx.navigateTo url: "/pages/buyer/main?owner=#{owner}&mobile=#{mobile}"
+        .catch (err) ->
+          wx.showToast
+            title: err
+            icon: 'none'
+
+    checkStoreId: (storeId) ->
       query = Bmob.Query '_User'
-      query.equalTo 'storeId', '==', Number(this.buyerId || -1) # 默认是请求-1, -1没有值
-      query.find null
+      query.equalTo 'storeId', '==', Number(storeId || -1) # 默认是请求-1, -1没有值
+      wx.showLoading title:'正在检查门店号'
+      return query.find null
         .then (res) =>
+          wx.hideLoading null
           if res.length
             result = res[0]
-            owner = result.username
-            mobile = result.mobilePhoneNumber
-            wx.redirectTo url: "/pages/buyer/main?owner=#{owner}&mobile=#{mobile}"
+            Promise.resolve result
           else
-            wx.showToast
-              title: '没有对应门店'
-              icon: 'none'
+            Promise.reject '没有对应门店'
+
+    login: ->
+      Bmob.User.login this.username, this.password
+        .then (res) =>
+          owner = res.username
+          mobile = res.mobilePhoneNumber
+          wx.navigateTo url: "/pages/seller/main?owner=#{owner}&mobile=#{mobile}"
         .catch (err) ->
-          console.log err
+          wx.showToast
+            title: '登录失败' # err.error
+            icon: 'none'
