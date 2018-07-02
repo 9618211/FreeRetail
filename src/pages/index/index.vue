@@ -4,7 +4,7 @@
     input.storeId(
       type='number'
       v-model='sellerId'
-      placeholder='输入店号'
+      placeholder='输入你的店号'
     )
     button.go(
       @click='clickGo(0)'

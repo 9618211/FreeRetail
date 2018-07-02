@@ -8,8 +8,8 @@ export default
   methods:
     clickGo: (type) ->
       switch type
-        when 1 then this.goBuyer null # 买家是1
-        else this.goSeller null # 卖家是0
+        when 0 then this.goSeller null # 卖家是0
+        else this.goBuyer null # 买家是1
 
     goSeller: ->
       wx.showToast title: '尚未处理'
