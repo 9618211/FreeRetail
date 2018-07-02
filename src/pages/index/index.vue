@@ -4,13 +4,20 @@
     input.storeId(
       type='number'
       :focus='true'
-      v-model='sellerId'
-      placeholder='输入你的店号'
+      v-model='storeId'
+      placeholder='输入店号'
       @focus='passwordShow=false'
     )
-    button.go(
-      @click='clickGo(0)'
-    ) 前往卖家
+    .nav
+      button.go(
+        @click='clickGo(0)'
+      ) 我是卖家
+      span.little(
+        @click='regist'
+      ) 注册卖家
+      button.go(
+        @click='clickGo(1)'
+      ) 我是买家
   .ver.password(
     v-if='passwordShow'
   )
@@ -22,21 +29,10 @@
     button.go(
       @click='login'
     ) 点击登录
-  .ver.buyer(
-    v-else
-  )
-    input.storeId(
-      type='number'
-      v-model='buyerId'
-      placeholder='输入店号'
-    )
-    button.go(
-      @click='clickGo(1)'
-    ) 前往买家
   span.buyer-show(
     v-if='passwordShow'
     @click='passwordShow=false'
-  ) 显示买家
+  ) 重置
 </template>
 
 <script>
@@ -59,21 +55,35 @@ export default {
 
   .ver
     display: flex
+    flex-direction: column
     justify-content: center
-    align-itemds: center
+    align-items: center
     width: 100%
     margin: 40rpx 0
 
+    .width
+      width: 80%
+
     .storeId
       @extend .input
-      width: 320rpx
-      margin-right: 40rpx
+      @extend .width
       text-align: center
       padding: 0
+      margin-bottom: 40rpx
 
-    .go
-      background: $mainColor
-      color: white
+    .nav
+      @extend .width
+      display: flex
+      justify-content: space-between
+      align-items: center
+
+      .go
+        background: $mainColor
+        color: white
+
+      .little
+        font-size: 24rpx
+        color: #bbb
 
   .buyer-show
     font-size: 24rpx

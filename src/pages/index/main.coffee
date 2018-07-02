@@ -7,6 +7,7 @@ export default
   data:
     sellerId: ''
     buyerId: ''
+    storeId: ''
     password: ''
     passwordShow: false # 是否显示密码框
 
@@ -17,7 +18,7 @@ export default
         else this.goBuyer null # 买家是1
 
     goSeller: ->
-      this.checkStoreId(this.sellerId)
+      this.checkStoreId(this.storeId)
         .then (result) =>
           this.username = result.username
           this.passwordShow = true
@@ -27,7 +28,7 @@ export default
             icon: 'none'
 
     goBuyer: ->
-      this.checkStoreId(this.buyerId)
+      this.checkStoreId(this.storeId)
         .then (result) =>
           owner = result.username
           mobile = result.mobilePhoneNumber
