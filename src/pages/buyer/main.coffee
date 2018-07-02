@@ -1,8 +1,12 @@
 import banner from '@/assets/banner.png'
+import main from '@/mixins/main.coffee'
+
 Bmob = require '@/utils/Bmob.js'
 owner = ''
 
 export default
+  mixins: [main]
+
   data:
     allGoods: [] # 所有商品
     types: ['全部', '海鲜', '火锅料', '猪', '牛羊', '鸡', '鸭', '其他美食']
@@ -19,17 +23,10 @@ export default
       autoplay: true
     mobile: ''
 
-  onLoad: ->
-
-  onShareAppMessage: ->
-    title: '小本生意实体网店，就该免费使用。'
-
   mounted: ->
     this.query()
 
   onLoad: (option) ->
-    wx.showShareMenu
-      withShareTicket: false
     owner = option.owner
     this.mobile = option.mobile
 

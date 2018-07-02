@@ -1,6 +1,9 @@
 import Bmob from '@/utils/Bmob'
+import main from '@/mixins/main.coffee'
 
 export default
+  mixins: [main]
+
   data:
     sellerId: ''
     buyerId: ''
