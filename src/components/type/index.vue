@@ -1,19 +1,20 @@
 <template lang='pug'>
 .type(
-  bindtap='clickType'
-  data-type="{{type}}"
+  @click='clickType(type)'
 )
-  img.img(
-    src="{{'../../imgs/type' + index + '.png'}}"
-  )
+  // img.img(
+  //  :src="'@/imgs/type' + index + '.png'"
+  //)
   span.name(
     mode="aspectFit"
   ) {{type}}
 </template>
 
 <script>
-export default {
+import main from './main.coffee'
 
+export default {
+  ...main,
 }
 </script>
 

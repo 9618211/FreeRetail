@@ -5,7 +5,7 @@
       placeholder="搜索"
       confirm-type="search"
       bindconfirm="confirm"
-      value="{{searchValue}}"
+      :value="searchValue"
     )
 </template>
 

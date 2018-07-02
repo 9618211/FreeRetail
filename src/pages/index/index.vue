@@ -2,35 +2,35 @@
 .container
   search(bind:clickSearch="clickSearch")
   swiper(
-    indicator-dots="{{bannerConfig.showDots}}"
-    autoplay="{{bannerConfig.autoplay}}"
-    interval="{{bannerConfig.interval}}"
-    duration="{{bannerConfig.duration}}"
-    circular="{{bannerConfig.circular}}"
+    :indicator-dots="bannerConfig.showDots"
+    :autoplay="bannerConfig.autoplay"
+    :interval="bannerConfig.interval"
+    :duration="bannerConfig.duration"
+    :circular="bannerConfig.circular"
   )
-     block(wx:for="{{bannerConfig.urls}}" wx:key="index")
+    block(
+      v-for="(url, index) of bannerConfig.urls" :key="index"
+    )
       swiper-item
         image(
-          src="{{item}}"
+          :src="url"
           mode="aspectFill"
           class="banner"
           width="355"
           height="150")
   .types
-     type(
-      wx:for="{{types}}"
-      wx:key="index"
-      type="{{item}}"
-      index="{{index}}"
-      bind:clickType="clickType")
+    type(
+      v-for="(type, index) of types" :key="index"
+      :type="type"
+      :index="index"
+      @clickType="clickType")
   .current-type-block
     .current-red
     .current-type {{currentType}}
-  .goods-block(wx:if="{{allGoods.length > 0}}")
+  .goods-block(v-if="allGoods.length > 0")
     goods(
-      wx:for="{{allGoods}}"
-      wx:key="index"
-      goods="{{item}}")
+      v-for="(goods, index) of allGoods" :key="index"
+      :goods="goods")
   .nothing(wx:else)
     icon(type="warn" size="20")
     span.nothing-text 什么都没有...
@@ -43,9 +43,9 @@
 
 <script>
 import main from './main.coffee'
-import goods from '@components/goods'
-import search from '@components/search'
-import type from '@components/type'
+import goods from '@/components/goods/index'
+import search from '@/components/search/index'
+import type from '@/components/type/index'
 
 export default {
   components: {
@@ -53,7 +53,7 @@ export default {
     search,
     type,
   },
-	...main
+	...main,
 }
 </script>
 

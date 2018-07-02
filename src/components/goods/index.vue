@@ -2,7 +2,7 @@
 .goods
   image.img(
     mode="aspectFit"
-    src="{{goods.url}}"
+    :src="goods.url"
   )
   span.name 品名: {{goods.name}}
   span.price 价格: {{goods.price}}

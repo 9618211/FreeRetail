@@ -1,11 +1,14 @@
 export default
-  props: ->
+  props:
     type:
       type: String
       default: -> ''
     index:
       type: Number
 
+  mounted: ->
+    console.log this.index
+
   methods:
-    clickType: (e) ->
-      this.$emit('clickType', { type: e.currentTarget.dataset.type })
+    clickType: (type) ->
+      this.$emit 'clickType', { type }

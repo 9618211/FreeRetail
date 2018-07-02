@@ -1,12 +1,8 @@
 <script>
 export default {
   created () {
-    // 调用API从本地缓存中获取数据
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
-    console.log('app created and cache logs by setStorageSync')
+    // var Bmob = require('utils/bmob.js');
+    // Bmob.initialize("10c20307173e1e708410686adc74e74b", "7d35e8a8e11a1101dffca33daabf12e0")
   }
 }
 </script>
