@@ -4,6 +4,7 @@
     input.storeId(
       type='number'
       v-model='sellerId'
+      placeholder='输入店号'
     )
     button.go(
       @click='clickGo(0)'
@@ -13,6 +14,7 @@
       type='number'
       v-model='buyerId'
       :focus='true'
+      placeholder='输入店号'
     )
     button.go(
       @click='clickGo(1)'

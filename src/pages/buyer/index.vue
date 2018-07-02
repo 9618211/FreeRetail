@@ -37,7 +37,7 @@
     span(
       @click="callPhone"
     ) 联系号码：
-      span.phone-number 18888888888
+      span.phone-number {{mobile}}
 </template>
 
 <script>

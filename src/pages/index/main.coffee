@@ -20,8 +20,10 @@ export default
       query.find null
         .then (res) =>
           if res.length
-            owner = res[0].username
-            wx.redirectTo url: "/pages/buyer/main?owner=#{owner}"
+            result = res[0]
+            owner = result.username
+            mobile = result.mobilePhoneNumber
+            wx.redirectTo url: "/pages/buyer/main?owner=#{owner}&mobile=#{mobile}"
           else
             wx.showToast
               title: '没有对应门店'

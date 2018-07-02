@@ -17,6 +17,7 @@ export default
       interval: 3000
       duration: 300
       autoplay: true
+    mobile: ''
 
   onLoad: ->
 
@@ -30,6 +31,7 @@ export default
     wx.showShareMenu
       withShareTicket: false
     owner = option.owner
+    this.mobile = option.mobile
 
   methods:
     query: (value) ->
@@ -38,11 +40,11 @@ export default
       currentType = this.currentType
       query.equalTo "type", '==', currentType if currentType isnt '全部'
 
-      wx.showLoading {title: '搜索中...'}
+      wx.showLoading title: '搜索中...'
 
       query.find()
         .then (results) =>
-          wx.hideLoading()
+          wx.hideLoading null
           allGoods = []
           for result in results
             name = result.name
